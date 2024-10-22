@@ -28,7 +28,7 @@ local function progressBar(data)
             clip = 'pick_door',
         },
     }) then 
-        lib.callback.await('fang-bubblegumrobbery:server:setRobbedStatus', source, data.entity, true)
+        lib.callback.await('fang-bubblegumrobbery:server:setRobbedStatus', data.entity, true)
         lib.callback.await('fang-bubblerobbery:server:giveMoney', data.entity)
         lib.notify({
             title = 'Success',
