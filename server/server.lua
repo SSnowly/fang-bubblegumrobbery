@@ -7,7 +7,7 @@ lib.callback.register('fang-bubblegumrobbery:server:getRobbedMachines', function
 end)
 
 lib.callback.register('fang-bubblegumrobbery:server:setRobbedStatus', function(source, entityID, state)
-    if robbedMachines[entityID] then
+    if robbedMachines[entityID] ~= nil then
         lib.print.warn('[WARNING] Player triggered giveMoney callback with robbed machine')
         return false
     end
@@ -31,7 +31,7 @@ lib.callback.register('fang-bubblerobbery:server:giveItem', function(source, ent
     local items = config.Items
     local itemSelect = math.random(1,5)
     local prizeItem = items[itemSelect].item
-    if robbedMachines[entity] then
+    if robbedMachines[entity] ~= nil then
         lib.print.warn('[WARNING] Player triggered giveMoney callback with robbed machine')
         return false
     end
@@ -50,7 +50,7 @@ lib.callback.register('fang-bubblerobbery:server:giveItem', function(source, ent
 end)
 
 lib.callback.register('fang-bubblerobbery:server:giveMoney', function(source, entity)
-    if robbedMachines[entity] then
+    if robbedMachines[entity] ~= nil then
         lib.print.warn('[WARNING] Player triggered giveMoney callback with robbed machine')
         return false
     end
