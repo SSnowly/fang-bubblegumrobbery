@@ -11,7 +11,7 @@ lib.callback.register('fang-bubblegumrobbery:server:setRobbedStatus', function(s
         lib.print.warn('[WARNING] Player triggered giveMoney callback with robbed machine')
         return false
     end
-    if #(GetEntityCoords(GetPlayerFromServerId(source)) - GetEntityCoords(entityID)) > config.Distance then
+    if #(GetEntityCoords(GetPlayerPed(source)) - GetEntityCoords(entityID)) > config.Distance then
         lib.print.warn('[WARNING] Player triggered giveMoney callback with invalid distance')
         return false
     end
@@ -35,7 +35,7 @@ lib.callback.register('fang-bubblerobbery:server:giveItem', function(source, ent
         lib.print.warn('[WARNING] Player triggered giveMoney callback with robbed machine')
         return false
     end
-    if #(GetEntityCoords(GetPlayerFromServerId(source)) - GetEntityCoords(entity)) > config.Distance then
+    if #(GetEntityCoords(GetPlayerPed(source)) - GetEntityCoords(entity)) > config.Distance then
         lib.print.warn('[WARNING] Player triggered giveMoney callback with invalid distance')
         return false
     end
@@ -54,7 +54,7 @@ lib.callback.register('fang-bubblerobbery:server:giveMoney', function(source, en
         lib.print.warn('[WARNING] Player triggered giveMoney callback with robbed machine')
         return false
     end
-    if #(GetEntityCoords(GetPlayerFromServerId(source)) - GetEntityCoords(entity)) > config.Distance then
+    if #(GetEntityCoords(GetPlayerPed(source)) - GetEntityCoords(entity)) > config.Distance then
         lib.print.warn('[WARNING] Player triggered giveMoney callback with invalid distance')
         return false
     end

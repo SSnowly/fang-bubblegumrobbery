@@ -53,11 +53,7 @@ local function setupBuyTargets()
         {
             label = 'Buy a random ball',
             icon = 'fa-solid fa-dollar-sign',
-            canInteract = function(data)
-                local isRobbed = lib.callback.await('fang-bubblegumrobbery:server:getRobbedMachines', false, data.entity)
-                return not isRobbed
-            end,
-            onSelect = function()
+            onSelect = function(data)
             lib.callback.await('fang-bubblerobbery:server:giveItem', data.entity)
             end
         },
@@ -70,6 +66,14 @@ local function setupBuyTargets()
                 return not isRobbed
             end,
             onSelect = function(data)
+                local isRobbed = lib.callback.await('fang-bubblegumrobbery:server:getRobbedMachines', false, data.entity)
+                if isRobbed then
+                   return lib.notify({
+                        title = 'You\'re blind!',
+                        description = 'The machine is broken. Come back later',
+                        type = 'error'
+                    }) 
+                end
                 local success = lib.skillCheck({'easy', 'easy', {areaSize = 60, speedMultiplier = 2}}, {'1', '2', '3', '4'})
                 if not success then
                     lib.notify({
